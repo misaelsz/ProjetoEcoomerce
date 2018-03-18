@@ -1,0 +1,26 @@
+﻿@model IEnumerable<EcommerceOsorio.Models.Categoria>
+@{
+	ViewBag.Title = "Home";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>Pagina Principal</h2>
+
+
+@Html.ActionLink("Gerenciamento de Categorias", "Index", "Categorias", null, null)
+<br/>
+
+@Html.ActionLink("Gerenciamento de Produtos", "Index", "Produtos", null, null)
+<br/>
+<table>
+	<tr>
+
+		@foreach (var item in Model)
+		{
+			@Html.ActionLink(item.CategoriaNome, "ListarProdutosPorCategoria", "Home", new { id = item.CategoriaId }, null)
+		}
+	</tr>
+
+</table>
+
