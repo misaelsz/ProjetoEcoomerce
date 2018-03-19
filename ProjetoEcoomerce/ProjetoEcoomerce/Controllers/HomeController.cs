@@ -11,22 +11,23 @@ namespace ProjetoEcoomerce.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View(CategoriaDAO.ListarCategorias());
-        }
 
-        public List<Produto> ListarProdutosPorCategoria(int? id) {
+            ViewBag.Id = id;
+            ViewBag.ListaDeCategorias = CategoriaDAO.ListarCategorias();
             List<Produto> listaDaCategoria = new List<Produto>();
-            List<Produto> listaDeProdutos = ProdutoDAO.ListarProdutos();
+            ViewBag.listaDeProdutos = ProdutoDAO.ListarProdutos();
             Categoria categoria = CategoriaDAO.BuscarCategoriaPorId(id);
-            foreach (Produto p in listaDeProdutos) {
-                if (p.ProdutoCategoria == categoria) {
+            foreach (Produto p in ViewBag.listaDeProdutos)
+            {
+                if (p.ProdutoCategoria == categoria)
+                {
                     listaDaCategoria.Add(p);
                 }
             }
             ViewBag.ProdutoDaCategoria = listaDaCategoria;
-            return ViewBag.ProdutoDaCategoria;
+            return View();
         }
     }
 }

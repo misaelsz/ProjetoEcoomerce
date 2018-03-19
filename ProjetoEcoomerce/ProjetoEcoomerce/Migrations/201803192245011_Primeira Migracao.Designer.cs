@@ -13,7 +13,7 @@ namespace ProjetoEcoomerce.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201803181753573_Primeira Migracao"; }
+            get { return "201803192245011_Primeira Migracao"; }
         }
         
         string IMigrationMetadata.Source

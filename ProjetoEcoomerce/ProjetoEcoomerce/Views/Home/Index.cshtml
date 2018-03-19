@@ -13,14 +13,28 @@
 
 @Html.ActionLink("Gerenciamento de Produtos", "Index", "Produtos", null, null)
 <br/>
-<table>
-	<tr>
 
-		@foreach (var item in Model)
+<div>
+	<ul>
+		@foreach (var item in ViewBag.ListaDeCategorias)
 		{
-			@Html.ActionLink(item.CategoriaNome, "ListarProdutosPorCategoria", "Home", new { id = item.CategoriaId }, null)
+			<li>
+				<a href="~/Home/Index/@item.CategoriaId">@item.CategoriaNome</a>
+			</li>
 		}
-	</tr>
 
-</table>
+	</ul>
+</div>
+
+<div>
+	if(ViewBag.Id != null){
+	  @foreach (var itemProduto in ViewBag.ProdutoDaCategoria) {
+		 <div id="@itemProduto.ProdutoCategoria.CategoriaNome">
+			 <div>
+				 <h3>@itemProduto.ProdutoNome</h3>
+			 </div>
+		 </div>
+	  }
+	  }
+</div>
 
