@@ -7,6 +7,17 @@
     List<Categoria> categorias = ViewBag.Categorias;
 }
 
+
+<script>
+
+</script>
+
+<div id="carrinho">
+    <a href="">
+        <img src="" />
+    </a>
+    </div>>
+
 <div id="categorias" style="text-align:center">
     <ul class="pagination pagination-lg">
         @foreach (Categoria item in categorias)
@@ -25,7 +36,8 @@
             <div class="card-body">
                 <h5 class="card-title">@item.ProdutoNome</h5>
                 <p class="card-text">@item.ProdutoPreco.ToString("C2")</p>
-                <a href="#" class="btn btn-primary">Adicionar</a>
+                @*<a href="#" class="btn btn-primary">Adicionar</a>*@
+                @Html.ActionLink("Adicionar", "Carrinho", "Home", new { item.ProdutoId },new { @class= "btn btn-primary" })
             </div>
         </div>
     }
