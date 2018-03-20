@@ -1,0 +1,32 @@
+﻿@model List<EcommerceOsorio.Models.Produto>
+@using EcommerceOsorio.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Template.cshtml";
+    List<Categoria> categorias = ViewBag.Categorias;
+}
+
+<div id="categorias" style="text-align:center">
+    <ul class="pagination pagination-lg">
+        @foreach (Categoria item in categorias)
+        {
+            <li class="page-item">
+                @Html.ActionLink(item.CategoriaNome, "Index", "Home", new { id = item.CategoriaId }, new { @class = "page-link" })
+            </li>
+        }
+    </ul>
+</div>
+<div class="row">
+    @foreach (Produto item in Model)
+    {
+        <div class="card" style="width:200px;margin-left:20px;margin-bottom:20px">
+            <img class="card-img-top" src="~/Images/@item.ProdutoImagem">
+            <div class="card-body">
+                <h5 class="card-title">@item.ProdutoNome</h5>
+                <p class="card-text">@item.ProdutoPreco.ToString("C2")</p>
+                <a href="#" class="btn btn-primary">Adicionar</a>
+            </div>
+        </div>
+    }
+</div>
